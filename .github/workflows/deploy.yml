@@ -3,7 +3,7 @@ name: Deploy to AWS App Runner
 on:
   push:
     branches:
-    - master
+    - main
 
 jobs:
   deploy:
