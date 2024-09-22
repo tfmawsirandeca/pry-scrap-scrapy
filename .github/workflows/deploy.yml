@@ -38,19 +38,19 @@ jobs:
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
         echo "image=$REGISTRY/$REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
-    # - name: Deploy to App Runner Image
-    #   id: deploy-apprunner
-    #   uses: awslabs/amazon-app-runner-deploy@main
-    #   with:
-    #     service: ${{ secrets.APP_RUNNER_SERVICE_NAME }}
-    #     image: ${{ steps.build-image.outputs.image }}
-    #     access-role-arn: ${{ secrets.ROLE_ARN }}
-    #     region: ${{ secrets.AWS_REGION }}
-    #     cpu: 1
-    #     memory: 2
-    #     wait-for-service-stability-seconds: 1200
-    #     port: 8080
-    #     branch: 'main'
+    - name: Deploy to App Runner Image
+      id: deploy-apprunner
+      uses: awslabs/amazon-app-runner-deploy@main
+      with:
+        service: ${{ secrets.APP_RUNNER_SERVICE_NAME }}
+        image: ${{ steps.build-image.outputs.image }}
+        access-role-arn: ${{ secrets.ROLE_ARN }}
+        region: ${{ secrets.AWS_REGION }}
+        cpu: 1
+        memory: 2
+        wait-for-service-stability-seconds: 1200
+        port: 8080
+        branch: 'main'
 
-    # - name: App Runner URL
-    #   run: echo "App runner URL ${{ steps.deploy-apprunner.outputs.service-url }}"
+    - name: App Runner URL
+      run: echo "App runner URL ${{ steps.deploy-apprunner.outputs.service-url }}"
