@@ -52,5 +52,5 @@ jobs:
     #     port: 8080
     #     branch: 'main'
 
-    - name: App Runner URL
-      run: echo "App runner URL ${{ steps.deploy-apprunner.outputs.service-url }}"
+    # - name: App Runner URL
+    #   run: echo "App runner URL ${{ steps.deploy-apprunner.outputs.service-url }}"
